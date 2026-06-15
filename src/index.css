@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+* {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
