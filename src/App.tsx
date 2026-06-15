@@ -1,7 +1,13 @@
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-const colors = ['#ef4444', '#3b82f6', '#22c55e', '#f59e0b']
 const order = [0, 2, 1, 3]
+
+const imgs = [
+  '/background-6556413 9.png',
+  '/1990.417 - Cabin in the Cotton.jpg',
+  '/3.jpg',
+  '/1949.544 - Movement.jpg',
+]
 
 function Rectangles() {
   const [i, setI] = useState(0)
@@ -14,28 +20,35 @@ function Rectangles() {
 
   return (
     <div className="relative" style={{ width: 'clamp(80px, 12vw, 200px)', aspectRatio: '1 / 1.61' }}>
-      {colors.map((color, idx) => {
+      {imgs.map((img, idx) => {
         const tilt = (idx - 1.5) * 3
         return (
           <div
             key={idx}
             className="absolute inset-0"
             style={{
-              backgroundColor: color,
+              backgroundImage: `url("${img}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundColor: '#ccc',
               transform: `rotate(${tilt}deg)`,
               zIndex: idx === active ? 10 : idx,
             }}
           />
         )
       })}
+      <div className="absolute inset-0 bg-black/10 z-[15]" />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+        <img src="/logo.svg" className="w-[clamp(22px,3.3vw,43px)]" />
+      </div>
     </div>
   )
 }
 
 function Nav({ page }: { page: string }) {
   return (
-    <nav className="z-20 px-4 pt-4">
-      <div className="flex justify-between w-full text-xs sm:text-sm">
+    <nav className="z-20 w-full px-4 pt-4">
+      <div className="flex justify-evenly w-full text-xs sm:text-sm uppercase">
         <a href={page === 'about' ? '#/' : '#/about'} className="relative cursor-pointer whitespace-nowrap">
           <span className="invisible">about</span>
           <span className="absolute left-0 top-0">{page === 'about' ? 'home' : 'about'}</span>
@@ -77,16 +90,14 @@ function Mission() {
   return (
     <div className="flex flex-col items-center justify-center gap-3 lg:gap-4 max-w-[80%] lg:max-w-[40%]">
       <span className="text-[clamp(24px,5vw,60px)] leading-none font-bold text-center">
-        our mission
+        reflecting art and beauty
       </span>
-      <div
-        className="w-[clamp(60px,8vw,160px)] aspect-square flex items-center justify-center text-[clamp(8px,1.2vw,14px)] leading-tight"
-        style={{ backgroundColor: '#e5e5e5' }}
-      >
-        illustration
-      </div>
+      <img
+        src="/mission.png"
+        className="w-[clamp(60px,8vw,160px)]"
+      />
       <span className="text-[clamp(11px,1.5vw,18px)] leading-tight text-center max-w-[55ch]">
-        We empower creators with tools that bridge imagination and reality, making the impossible accessible through design and technology.
+        we reflect art and beauty in everything we create, every discipline we work on, is a canvas our artwork is laid upon, and every principle we choose, we seek the depth of beauty in it
       </span>
     </div>
   )
@@ -96,16 +107,14 @@ function Vision() {
   return (
     <div className="flex flex-col items-center justify-center gap-3 lg:gap-4 max-w-[80%] lg:max-w-[40%]">
       <span className="text-[clamp(24px,5vw,60px)] leading-none font-bold text-center">
-        our vision
+        building works across disciplines
       </span>
-      <div
-        className="w-[clamp(60px,8vw,160px)] aspect-square flex items-center justify-center text-[clamp(8px,1.2vw,14px)] leading-tight"
-        style={{ backgroundColor: '#e5e5e5' }}
-      >
-        illustration
-      </div>
+      <img
+        src="/vision.png"
+        className="w-[clamp(60px,8vw,160px)]"
+      />
       <span className="text-[clamp(11px,1.5vw,18px)] leading-tight text-center max-w-[55ch]">
-        A world where design thinking and technology converge to create meaningful, lasting impact across every discipline.
+        ikaiva's purpose is to keep building works across disciplines, and we envision ikaiva to work solely towards its purpose, and become a conglomerate studio by doing so
       </span>
     </div>
   )
@@ -186,19 +195,16 @@ function Contact() {
   return (
     <div className="flex flex-col items-center justify-center gap-3 lg:gap-4 max-w-[80%] lg:max-w-[40%]">
       <span className="text-[clamp(24px,5vw,60px)] leading-none font-bold text-center">
-        get in touch
+        who shapes the system that shapes us?
       </span>
-      <div
-        className="w-[clamp(60px,8vw,160px)] aspect-square flex items-center justify-center text-[clamp(8px,1.2vw,14px)] leading-tight"
-        style={{ backgroundColor: '#e5e5e5' }}
-      >
-        illustration
-      </div>
+      <img
+        src="/contact.png"
+        className="w-[clamp(60px,8vw,160px)]"
+      />
       <div className="flex flex-col items-center gap-2 lg:gap-3 mt-2">
         <a
           href="mailto:ikaiva.studio@gmail.com"
           className="text-[clamp(11px,1.5vw,18px)] leading-tight text-center hover:underline"
-          style={{ letterSpacing: '-2px' }}
         >
           ikaiva.studio@gmail.com
         </a>
@@ -207,51 +213,11 @@ function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           className="text-[clamp(11px,1.5vw,18px)] leading-tight text-center hover:underline"
-          style={{ letterSpacing: '-2px' }}
         >
           linkedin
         </a>
       </div>
     </div>
-  )
-}
-
-function Footer() {
-  const text = "ikaiva.studio"
-  const ref = useRef<HTMLSpanElement>(null)
-  const [fs, setFs] = useState(100)
-
-  useLayoutEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const fit = () => {
-      el.style.fontSize = '100px'
-      const natural = el.getBoundingClientRect().width
-      if (!natural) return
-      const target = el.parentElement!.getBoundingClientRect().width
-      const lsAdj = 2 * (text.length - 1)
-      setFs((target + lsAdj) / (natural + lsAdj) * 100)
-    }
-    fit()
-    addEventListener('resize', fit)
-    return () => removeEventListener('resize', fit)
-  }, [])
-
-  return (
-    <footer className="z-20 px-4 pb-2 leading-none select-none pointer-events-none">
-      <span
-        ref={ref}
-        style={{
-          display: 'inline-block',
-          fontSize: fs,
-          letterSpacing: '-2px',
-          lineHeight: 1,
-          whiteSpace: 'nowrap',
-        }}
-      >
-        {text}
-      </span>
-    </footer>
   )
 }
 
@@ -270,16 +236,19 @@ function App() {
   }, [])
 
   return (
-    <div className="fixed inset-0 flex flex-col bg-white" style={{ letterSpacing: '-2px' }}>
-      <Nav page={page} />
-      <div className="flex-1 relative z-10">
-        {page === 'home' && <div className="absolute inset-0 flex items-center justify-center p-4"><Rectangles /></div>}
-        {page === 'about' && <div className="absolute inset-0"><About /></div>}
-        {page === 'mission' && <div className="absolute inset-0 flex items-center justify-center p-4"><Mission /></div>}
-        {page === 'vision' && <div className="absolute inset-0 flex items-center justify-center p-4"><Vision /></div>}
-        {page === 'contact' && <div className="absolute inset-0 flex items-center justify-center p-4"><Contact /></div>}
+    <div className="fixed inset-0 flex flex-col bg-white">
+      <div className="flex-1 flex flex-col items-center justify-center">
+        <Nav page={page} />
+        <div className="w-full flex-1 relative z-10">
+          <div className="absolute inset-0">
+            {page === 'home' && <div className="w-full h-full flex items-center justify-center p-4"><Rectangles /></div>}
+            {page === 'about' && <About />}
+            {page === 'mission' && <div className="w-full h-full flex items-center justify-center p-4"><Mission /></div>}
+            {page === 'vision' && <div className="w-full h-full flex items-center justify-center p-4"><Vision /></div>}
+            {page === 'contact' && <div className="w-full h-full flex items-center justify-center p-4"><Contact /></div>}
+          </div>
+        </div>
       </div>
-      <Footer />
       {page === 'design-work' && (
         <div className="fixed inset-0 z-[15] overflow-y-auto hide-scrollbar">
           <Projects />
