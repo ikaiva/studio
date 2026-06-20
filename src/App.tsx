@@ -19,7 +19,7 @@ function Rectangles() {
   const active = order[i]
 
   return (
-    <div className="relative" style={{ width: 'clamp(120px, 18vw, 260px)', aspectRatio: '1 / 1.61' }}>
+    <div className="relative" style={{ width: 'clamp(120px, 15vw, 180px)', aspectRatio: '1 / 1.61' }}>
       {imgs.map((img, idx) => (
         <div
           key={idx}
@@ -71,11 +71,11 @@ const textColors = ['#135B85', '#354228', '#A4863D', '#313131']
 function About() {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center">
-      <div className="w-[45%] grid grid-cols-2 lg:grid-cols-4 gap-1 mt-4 mb-4">
+      <div className="w-[80%] lg:w-[45%] grid grid-cols-2 lg:grid-cols-4 gap-[1px] mt-4 mb-4">
         {Array.from({ length: 8 }, (_, i) => {
           const isImage = i < 4 ? i % 2 === 0 : i % 2 === 1
           return isImage ? (
-            <div key={i} className="relative aspect-[1/1.61] w-full">
+            <div key={i} className="relative aspect-square lg:aspect-[1/1.61] w-full m-0">
               <div
                 className="absolute inset-0"
                 style={{ backgroundImage: `url("${imgs[Math.floor(i / 2)]}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -85,7 +85,7 @@ function About() {
           ) : (
             <div
               key={i}
-              className="aspect-[1/1.61] w-full flex items-center justify-center text-center text-[clamp(6px,1.2vw,14px)] leading-tight p-2 text-white"
+              className="aspect-square lg:aspect-[1/1.61] w-full flex items-center justify-center text-center text-[clamp(6px,1.2vw,14px)] leading-tight p-2 text-white m-0"
               style={{ backgroundColor: textColors[Math.floor(i / 2)] }}
             >
               <span className="text-white">some text content</span>
@@ -100,12 +100,12 @@ function About() {
 function Mission() {
   return (
     <div className="flex flex-col items-center justify-center gap-3 lg:gap-4 max-w-[80%] lg:max-w-[40%]">
-      <span className="text-[clamp(24px,5vw,60px)] leading-none font-bold text-center">
+      <span className="text-[clamp(18px,4vw,45px)] leading-none font-bold text-center">
         reflecting art and beauty
       </span>
       <img
         src="/mission.png"
-        className="w-[clamp(60px,8vw,160px)]"
+        className="w-[clamp(75px,10vw,180px)]"
       />
       <span className="text-[clamp(11px,1.5vw,18px)] text-center max-w-[55ch]">
         we reflect art and beauty in everything we create, every discipline we work on, is a canvas our artwork is laid upon, and every principle we choose, we seek the depth of beauty in it
@@ -117,12 +117,12 @@ function Mission() {
 function Vision() {
   return (
     <div className="flex flex-col items-center justify-center gap-3 lg:gap-4 max-w-[80%] lg:max-w-[40%]">
-      <span className="text-[clamp(24px,5vw,60px)] leading-none font-bold text-center">
+      <span className="text-[clamp(18px,4vw,45px)] leading-none font-bold text-center">
         building works across disciplines
       </span>
       <img
         src="/vision.png"
-        className="w-[clamp(60px,8vw,160px)]"
+        className="w-[clamp(75px,10vw,180px)]"
       />
       <span className="text-[clamp(11px,1.5vw,18px)] text-center max-w-[55ch]">
         ikaiva's purpose is to keep building works across disciplines, and we envision ikaiva to work solely towards its purpose, and become a conglomerate studio by doing so
@@ -219,12 +219,12 @@ function AiWork() {
 function Contact() {
   return (
     <div className="flex flex-col items-center justify-center gap-3 lg:gap-4 max-w-[80%] lg:max-w-[40%]">
-      <span className="text-[clamp(24px,5vw,60px)] leading-none font-bold text-center">
+      <span className="text-[clamp(18px,4vw,45px)] leading-none font-bold text-center">
         who shapes the system that shapes us?
       </span>
       <img
         src="/contact.png"
-        className="w-[clamp(60px,8vw,160px)]"
+        className="w-[clamp(75px,10vw,180px)]"
       />
       <div className="flex flex-col items-center gap-2 lg:gap-3 mt-2">
         <a
