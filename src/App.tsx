@@ -9,7 +9,7 @@ const imgs = [
   '/1949.544 - Movement.jpg',
 ]
 
-function Rectangles() {
+function Rectangles({ showLogo = true }: { showLogo?: boolean }) {
   const [i, setI] = useState(0)
 
   useEffect(() => {
@@ -34,9 +34,11 @@ function Rectangles() {
         />
       ))}
       <div className="absolute inset-0 bg-black/10 z-[15]" />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-        <img src="/logo.svg" className="w-[clamp(22px,3.3vw,43px)]" />
-      </div>
+      {showLogo && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+          <img src="/logo.svg" className="w-[clamp(22px,3.3vw,43px)]" />
+        </div>
+      )}
     </div>
   )
 }
@@ -44,7 +46,7 @@ function Rectangles() {
 function Nav({ page }: { page: string }) {
   return (
     <nav className="z-20 self-stretch">
-      <div className="flex gap-x-4 sm:justify-between w-full text-[10px] sm:text-xs text-neutral-500">
+      <div className="flex gap-x-4 sm:justify-between w-full text-[10px] sm:text-sm text-neutral-500 px-[2vw] sm:px-[4vw]">
         <a href={page === 'about' ? '#/' : '#/about'} className="relative cursor-pointer whitespace-nowrap flex-1 text-center sm:flex-none">
           <span className="invisible">HOME</span>
           <span className="absolute left-1/2 -translate-x-1/2 top-0">{page === 'about' ? 'HOME' : 'STORY'}</span>
@@ -54,8 +56,8 @@ function Nav({ page }: { page: string }) {
           <span className="absolute left-1/2 -translate-x-1/2 top-0">{page === 'mission' ? 'FUTURE' : 'PURPOSE'}</span>
         </a>
         <a href={page === 'design-work' ? '#/ai-work' : '#/design-work'} className="relative cursor-pointer whitespace-nowrap flex-1 text-center sm:flex-none">
-          <span className="invisible">AI LAB</span>
-          <span className="absolute left-1/2 -translate-x-1/2 top-0">{page === 'design-work' ? 'AI LAB' : 'WORK'}</span>
+          <span className="invisible">AI WORKS</span>
+          <span className="absolute left-1/2 -translate-x-1/2 top-0">{page === 'design-work' ? 'AI WORKS' : 'WORK'}</span>
         </a>
         <a href={page === 'contact' ? '#/' : '#/contact'} className="relative cursor-pointer whitespace-nowrap flex-1 text-center sm:flex-none">
           <span className="invisible">HOME</span>
@@ -66,32 +68,36 @@ function Nav({ page }: { page: string }) {
   )
 }
 
-const textColors = ['#135B85', '#354228', '#A4863D', '#313131']
+const designCovers: Record<string, string> = {
+  artruth: '/artruth/storefront awning mockup 1.png',
+  beans: '/beans/cover.png',
+  blume: '/blume/cover.png',
+  'southern-floorings': '/sf/cover.png',
+}
+
+const aiCovers: Record<string, string> = {
+  clario: '/clario/clario logo.png',
+}
 
 function About() {
+  const topWords = ['Ikaiva exists', 'to create works', 'across disciplines']
+  const bottomWords = ['that serve', 'a purpose greater', 'than themselves']
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center">
-      <div className="w-[80%] lg:w-[45%] grid grid-cols-2 lg:grid-cols-4 gap-[1px] mt-4 mb-4">
-        {Array.from({ length: 8 }, (_, i) => {
-          const isImage = i < 4 ? i % 2 === 0 : i % 2 === 1
-          return isImage ? (
-            <div key={i} className="relative aspect-square lg:aspect-[1/1.61] w-full m-0">
-              <div
-                className="absolute inset-0"
-                style={{ backgroundImage: `url("${imgs[Math.floor(i / 2)]}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-              />
-              <div className="absolute inset-0 bg-black/10" />
-            </div>
-          ) : (
-            <div
-              key={i}
-              className="aspect-square lg:aspect-[1/1.61] w-full flex items-center justify-center text-center text-[clamp(6px,1.2vw,14px)] leading-tight p-2 text-white m-0"
-              style={{ backgroundColor: textColors[Math.floor(i / 2)] }}
-            >
-              <span className="text-white">some text content</span>
-            </div>
-          )
-        })}
+    <div className="h-full w-full flex items-center justify-center">
+      <div className="flex flex-col items-center gap-0">
+        {topWords.map((w, i) => (
+          <span key={i} className="text-[clamp(16px,3vw,32px)] text-center" style={{ lineHeight: 0.7, fontWeight: 600 }}>
+            {w}
+          </span>
+        ))}
+        <div className="my-16"></div>
+        <Rectangles />
+        <div className="my-16"></div>
+        {bottomWords.map((w, i) => (
+          <span key={i} className="text-[clamp(16px,3vw,32px)] text-center" style={{ lineHeight: 0.7, fontWeight: 600 }}>
+            {w}
+          </span>
+        ))}
       </div>
     </div>
   )
@@ -105,9 +111,9 @@ function Mission() {
       </span>
       <img
         src="/mission.png"
-        className="w-[clamp(75px,10vw,180px)]"
+        className="w-[clamp(90px,12vw,160px)]"
       />
-      <span className="text-[clamp(11px,1.5vw,18px)] text-center max-w-[55ch]">
+      <span className="font-normal text-[clamp(11px,1.5vw,18px)] text-center max-w-[40ch]">
         we reflect art and beauty in everything we create, every discipline we work on, is a canvas our artwork is laid upon, and every principle we choose, we seek the depth of beauty in it
       </span>
     </div>
@@ -122,9 +128,9 @@ function Vision() {
       </span>
       <img
         src="/vision.png"
-        className="w-[clamp(75px,10vw,180px)]"
+        className="w-[clamp(90px,12vw,160px)]"
       />
-      <span className="text-[clamp(11px,1.5vw,18px)] text-center max-w-[55ch]">
+      <span className="font-normal text-[clamp(11px,1.5vw,18px)] text-center max-w-[40ch]">
         ikaiva's purpose is to keep building works across disciplines, and we envision ikaiva to work solely towards its purpose, and become a conglomerate studio by doing so
       </span>
     </div>
@@ -134,34 +140,39 @@ function Vision() {
 function Projects() {
   const ref = useRef<HTMLDivElement>(null)
   const projects = [
-    { w: 'clamp(140px,30vw,480px)', h: 'clamp(320px,55vh,680px)', name: 'artruth', href: '#/design/artruth' },
-    { w: 'clamp(180px,48vw,640px)', h: 'clamp(260px,42vh,520px)', name: 'blume', href: '#/design/blume' },
-    { w: 'clamp(130px,28vw,440px)', h: 'clamp(300px,50vh,620px)', name: 'beans', href: '#/design/beans' },
-    { w: 'clamp(120px,25vw,400px)', h: 'clamp(340px,60vh,740px)', name: 'southern-floorings', href: '#/design/southern-floorings' },
+    { w: 'clamp(140px,25vw,460px)', h: 'clamp(160px,25vh,400px)', name: 'artruth', year: '2026', href: '#/design/artruth', cover: '/artruth/storefront awning mockup 1.png' },
+    { w: 'clamp(180px,38vw,580px)', h: 'clamp(160px,26vh,460px)', name: 'blume', year: '2024', href: '#/design/blume', cover: '/blume/cover.png' },
+    { w: 'clamp(120px,22vw,420px)', h: 'clamp(200px,35vh,520px)', name: 'beans', year: '2024', href: '#/design/beans', cover: '/beans/cover.png' },
+    { w: 'clamp(160px,30vw,500px)', h: 'clamp(170px,28vh,440px)', name: 'southern floorings', year: '2025', href: '#/design/southern-floorings', cover: '/sf/cover.png' },
   ]
+  const items = [...projects, ...projects, ...projects]
+  const midIndex = projects.length
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
     const parent = el.parentElement
     if (!parent) return
-    const pad = 200
-    parent.scrollTop = pad + 300
+    const children = el.children
+    if (children.length < midIndex + 1) return
+    const midTop = (children[midIndex] as HTMLElement).offsetTop
+    parent.scrollTop = midTop
     let ticking = false
     let wrapping = false
-    const onScroll = () => {
+    const scroll = () => {
       if (wrapping) return
       if (!ticking) {
         requestAnimationFrame(() => {
           if (wrapping) { ticking = false; return }
-          const { scrollHeight, clientHeight, scrollTop } = parent
-          if (scrollTop + clientHeight >= scrollHeight - pad) {
+          const { scrollTop, scrollHeight, clientHeight } = parent
+          const setHeight = scrollHeight / 3
+          if (scrollTop <= 1) {
             wrapping = true
-            parent.scrollTop = pad + 300
+            parent.scrollTop = scrollTop + setHeight
             requestAnimationFrame(() => { wrapping = false })
-          } else if (scrollTop <= pad) {
+          } else if (scrollTop + clientHeight >= scrollHeight - 1) {
             wrapping = true
-            parent.scrollTop = scrollHeight - clientHeight - pad - 300
+            parent.scrollTop = scrollTop - setHeight
             requestAnimationFrame(() => { wrapping = false })
           }
           ticking = false
@@ -169,49 +180,58 @@ function Projects() {
         ticking = true
       }
     }
-    parent.addEventListener('scroll', onScroll, { passive: true })
-    return () => parent.removeEventListener('scroll', onScroll)
-  }, [])
+    parent.addEventListener('scroll', scroll, { passive: true })
+    return () => parent.removeEventListener('scroll', scroll)
+  }, [midIndex])
 
   return (
-    <div ref={ref} className="flex flex-col items-center pt-4 pb-[10vh] gap-[clamp(12px,3vh,40px)]">
-      {projects.map((p, i) => (
-        <a
-          key={i}
-          href={p.href}
-          className="flex items-center justify-center text-[clamp(11px,1.3vw,16px)] leading-tight text-center no-underline cursor-pointer"
-          style={{
-            width: p.w,
-            height: p.h,
-            backgroundColor: '#e5e5e5',
-            color: 'inherit',
-          }}
-        >
-          {p.name}
-        </a>
+    <div ref={ref} className="flex flex-col items-center pt-4 pb-[10vh] gap-[clamp(2px,0.5vh,12px)]">
+      {items.map((p, i) => (
+        <div key={i} className="relative flex items-center justify-center w-full sm:px-[4vw]" style={{ minHeight: p.h }}>
+          <span className="absolute left-[4vw] sm:static sm:flex-1 sm:text-right sm:pr-5 text-[clamp(10px,1.1vw,14px)] uppercase" style={{ color: '#a3a3a3' }}>
+            {p.name === 'southern floorings' ? <><span className="block" style={{ color: '#a3a3a3' }}>southern</span><span className="block" style={{ color: '#a3a3a3' }}>floorings</span></> : p.name}
+          </span>
+          <a
+            href={p.href}
+            className="flex-shrink-0 flex items-center justify-center text-[clamp(10px,1.1vw,14px)] leading-tight text-center no-underline cursor-pointer"
+            style={{
+              width: p.w,
+              height: p.h,
+              backgroundImage: `url("${p.cover}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              color: '#fff',
+            }}
+          />
+          <span className="absolute right-[4vw] sm:static sm:flex-1 sm:text-left sm:pl-5 text-[clamp(10px,1.1vw,14px)] uppercase" style={{ color: '#a3a3a3' }}>{p.year}</span>
+        </div>
       ))}
     </div>
   )
 }
 
 function AiWork() {
-  const w = 'clamp(140px,30vw,360px)'
-  const h = 'clamp(240px,45vh,480px)'
+  const w = 'clamp(120px,22vw,380px)'
+  const h = 'clamp(180px,30vh,360px)'
 
   return (
     <div className="min-h-full w-full flex items-center justify-center">
-      <a
-        href="#/artificial-intelligence/clario"
-        className="flex items-center justify-center text-[clamp(11px,1.3vw,16px)] leading-tight text-center no-underline cursor-pointer"
-        style={{
-          width: w,
-          height: h,
-          backgroundColor: '#e5e5e5',
-          color: 'inherit',
-        }}
-      >
-        clario
-      </a>
+      <div className="relative flex items-center justify-center w-full sm:px-[4vw]" style={{ minHeight: h }}>
+        <span className="absolute left-[4vw] sm:static sm:flex-1 sm:text-right sm:pr-5 text-[clamp(10px,1.1vw,14px)] uppercase" style={{ color: '#a3a3a3' }}>clario</span>
+        <a
+          href="#/artificial-intelligence/clario"
+          className="flex-shrink-0 flex items-center justify-center text-[clamp(10px,1.1vw,14px)] leading-tight text-center no-underline cursor-pointer"
+          style={{
+            width: w,
+            height: h,
+            backgroundImage: 'url("/clario/clario logo.png")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            color: '#fff',
+          }}
+        />
+        <span className="absolute right-[4vw] sm:static sm:flex-1 sm:text-left sm:pl-5 text-[clamp(10px,1.1vw,14px)] uppercase" style={{ color: '#a3a3a3' }}>2026</span>
+      </div>
     </div>
   )
 }
@@ -224,12 +244,12 @@ function Contact() {
       </span>
       <img
         src="/contact.png"
-        className="w-[clamp(75px,10vw,180px)]"
+        className="w-[clamp(90px,12vw,160px)]"
       />
       <div className="flex flex-col items-center gap-2 lg:gap-3 mt-2">
         <a
           href="mailto:ikaiva.studio@gmail.com"
-          className="text-[clamp(11px,1.5vw,18px)] text-center hover:underline"
+          className="font-normal text-[clamp(11px,1.5vw,18px)] text-center hover:underline"
         >
           ikaiva.studio@gmail.com
         </a>
@@ -237,7 +257,7 @@ function Contact() {
           href="https://www.linkedin.com/company/ikaiva-studio/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[clamp(11px,1.5vw,18px)] text-center hover:underline"
+          className="font-normal text-[clamp(11px,1.5vw,18px)] text-center hover:underline"
         >
           linkedin
         </a>
@@ -274,8 +294,32 @@ function App() {
             {page === 'mission' && <div className="w-full h-full flex items-center justify-center p-4"><Mission /></div>}
             {page === 'vision' && <div className="w-full h-full flex items-center justify-center p-4"><Vision /></div>}
             {page === 'contact' && <div className="w-full h-full flex items-center justify-center p-4"><Contact /></div>}
-            {page === 'design' && <div className="w-full h-full flex items-center justify-center p-4 text-[clamp(24px,5vw,60px)] leading-none font-bold text-center"><span>{slug}</span></div>}
-            {page === 'artificial-intelligence' && <div className="w-full h-full flex items-center justify-center p-4 text-[clamp(24px,5vw,60px)] leading-none font-bold text-center"><span>{slug}</span></div>}
+            {page === 'design' && designCovers[slug] ? (
+              <div className="w-full h-full flex items-center justify-center p-4">
+                <div
+                  className="w-full h-full"
+                  style={{
+                    backgroundImage: `url("${designCovers[slug]}")`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </div>
+            ) : null}
+            {page === 'artificial-intelligence' && aiCovers[slug] ? (
+              <div className="w-full h-full flex items-center justify-center p-4">
+                <div
+                  className="w-full h-full"
+                  style={{
+                    backgroundImage: `url("${aiCovers[slug]}")`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
