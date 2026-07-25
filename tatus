@@ -1,0 +1,5 @@
+[33m9ebbd3b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Update Navbar component
+[33ma37dd6c[m first commit of the redesign
+[33m12f7c68[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m add project cover images, title/year labels at page margins, lighter gray, responsive nav padding
+[33m31f54e7[m about: responsive square cells on mobile, 80% width, equal 1px gaps, reset universal margin on cells
+[33mb37a6f5[m nav: relabel links to HOME/STORY/WORK/AI LAB/REACH/PURPOSE/FUTURE with toggle pairs, font size and margin tweaks
