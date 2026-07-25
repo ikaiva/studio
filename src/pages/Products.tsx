@@ -1,54 +1,26 @@
-interface WorkProps {
+interface ProductsProps {
   page: string
 }
 
 const projects = [
   {
-    name: 'artruth',
-    slug: 'artruth',
-    outcome: 'enhanced user engagement by 40%',
-    details: 'a digital platform for authentic storytelling and brand transparency',
-    color: 'bg-rose-300',
-  },
-  {
-    name: 'beans',
-    slug: 'beans',
-    outcome: 'streamlined operations for 200+ vendors',
-    details: 'an end-to-end marketplace connecting local producers with consumers',
-    color: 'bg-amber-300',
-  },
-  {
-    name: 'blume',
-    slug: 'blume',
-    outcome: 'grew online sales by 60% in 3 months',
-    details: 'a premium e-commerce experience for a sustainable beauty brand',
-    color: 'bg-emerald-300',
-  },
-  {
-    name: 'southern floorings',
-    slug: 'southern-floorings',
-    outcome: 'increased lead generation by 3x',
-    details: 'a product catalog and inquiry system for a flooring manufacturer',
-    color: 'bg-sky-300',
-  },
-  {
-    name: 'manam chennai',
-    slug: 'manam-chennai',
-    outcome: 'boosted table bookings by 50%',
-    details: 'a reservation and branding platform for a fine-dining restaurant',
-    color: 'bg-violet-300',
+    name: 'clario',
+    slug: 'clario',
+    outcome: 'streamlined client communication for 50+ agencies',
+    details: 'an AI-powered project management tool built for creative studios',
+    color: 'bg-indigo-300',
   },
 ]
 
-export default function Work({ page }: WorkProps) {
+export default function Products({ page }: ProductsProps) {
   return (
     <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col">
       <div className="pt-[1rem] px-[1rem] flex-1 flex flex-col justify-end pb-[1rem]">
         <h1 className="text-[8vw] sm:text-[5vw] tracking-tighter max-w-[90vw]">
-          we design brands and interfaces with its purpose
+          products we've built to solve real problems
         </h1>
         <p className="text-[4vw] sm:text-[2vw] mt-[0.4em] tracking-tighter text-gray-500">
-          a curated selection of projects we've built and delivered
+          tools and platforms designed to make a difference
         </p>
       </div>
       <div className="px-[1rem] mt-24 flex flex-col gap-[1rem]">

@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Work from './pages/Work'
+import Products from './pages/Products'
+import Contact from './pages/Contact'
+import Navbar from './components/Navbar'
+
+const projectSlugs = ['artruth', 'beans', 'blume', 'southern-floorings', 'manam-chennai']
 
 function App() {
   const [page, setPage] = useState('home')
@@ -17,17 +22,45 @@ function App() {
     return () => removeEventListener('hashchange', onHash)
   }, [])
 
-  switch (page) {
-    case 'about':
-      return <About page={page} />
-    case 'work':
-      return <Work page={page} />
-    case 'products':
-    case 'contact':
-      return <Home page={page} />
-    default:
-      return <Home page={page} />
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [page])
+
+  const hideScrollbar = !['service', 'products'].includes(page) && !projectSlugs.includes(page)
+
+  useEffect(() => {
+    if (hideScrollbar) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+  }, [hideScrollbar])
+
+  const renderPage = () => {
+    switch (page) {
+      case 'about':
+        return <About page={page} />
+      case 'work':
+      case 'service':
+        return <Work page={page} />
+      case 'products':
+        return <Products page={page} />
+      case 'contact':
+        return <Contact page={page} />
+      default:
+        if (projectSlugs.includes(page)) {
+          return <Work page="work" />
+        }
+        return <Home page={page} />
+    }
   }
+
+  return (
+    <>
+      {renderPage()}
+      <Navbar page={page} />
+    </>
+  )
 }
 
 export default App

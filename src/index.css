@@ -20,12 +20,17 @@
     font-family: 'HelveticaNeueBlack', sans-serif;
     margin: 0;
     padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  body.no-scroll {
     overflow: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 }
 
-body::-webkit-scrollbar {
+body.no-scroll::-webkit-scrollbar {
   display: none;
 }

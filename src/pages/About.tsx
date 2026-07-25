@@ -1,12 +1,10 @@
-import Navbar from '../components/Navbar'
-
 interface AboutProps {
   page: string
 }
 
 export default function About({ page }: AboutProps) {
   return (
-    <div className="fixed inset-0 bg-white flex flex-col justify-between">
+    <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col justify-between">
       <div className="m-[1rem] flex-1 flex flex-col justify-start">
         <h1 className="text-[8vw] sm:text-[5vw] tracking-tighter max-w-[90vw]">
           we're a multidisciplinary studio building works across disciplines
@@ -34,9 +32,6 @@ export default function About({ page }: AboutProps) {
             to become a studio that shapes how people interact with brands, products, and spaces. we envision a future where design solves what words cannot.
           </p>
         </div>
-      </div>
-      <div className="mx-[1rem] mb-[1rem]">
-        <Navbar page={page} theme="light" />
       </div>
     </div>
   )
