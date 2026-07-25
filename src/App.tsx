@@ -26,16 +26,6 @@ function App() {
     window.scrollTo(0, 0)
   }, [page])
 
-  const hideScrollbar = !['service', 'products'].includes(page) && !projectSlugs.includes(page)
-
-  useEffect(() => {
-    if (hideScrollbar) {
-      document.body.classList.add('no-scroll')
-    } else {
-      document.body.classList.remove('no-scroll')
-    }
-  }, [hideScrollbar])
-
   const renderPage = () => {
     switch (page) {
       case 'about':

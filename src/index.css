@@ -23,14 +23,4 @@
     overflow-y: auto;
     overflow-x: hidden;
   }
-
-  body.no-scroll {
-    overflow: hidden;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-
-body.no-scroll::-webkit-scrollbar {
-  display: none;
 }
