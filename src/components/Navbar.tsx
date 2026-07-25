@@ -14,7 +14,7 @@ function NavLink({ name, href, isActive }: { name: string; href: string; isActiv
   return (
     <a
       href={isActive ? '#/' : href}
-      className="cursor-pointer hover:text-black transition-colors text-[16px] sm:text-[20px]"
+      className="cursor-pointer hover:text-black transition-colors text-[16px] sm:text-[18px]"
     >
       {isActive ? 'home' : name}
     </a>
