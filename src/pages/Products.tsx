@@ -12,7 +12,7 @@ const projects = [
   },
 ]
 
-export default function Products({ page }: ProductsProps) {
+export default function Products({ page: _page }: ProductsProps) {
   return (
     <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col">
       <div className="pt-[1rem] px-[1rem] flex-1 flex flex-col justify-end pb-[1rem]">

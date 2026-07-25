@@ -2,7 +2,7 @@ interface HomeProps {
   page: string
 }
 
-export default function Home({ page }: HomeProps) {
+export default function Home({ page: _page }: HomeProps) {
   return (
     <div className="relative bg-white min-h-screen pb-[5rem] z-20">
       <div className="m-[1rem] h-[80vh] flex items-center justify-center overflow-hidden">

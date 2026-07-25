@@ -8,7 +8,7 @@ const links = [
   { name: 'request a review', href: '#' },
 ]
 
-export default function Contact({ page }: ContactProps) {
+export default function Contact({ page: _page }: ContactProps) {
   return (
     <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col justify-between">
       <div className="pt-[1rem] px-[1rem]">

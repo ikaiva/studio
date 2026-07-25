@@ -2,7 +2,7 @@ interface AboutProps {
   page: string
 }
 
-export default function About({ page }: AboutProps) {
+export default function About({ page: _page }: AboutProps) {
   return (
     <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col justify-between">
       <div className="m-[1rem] flex-1 flex flex-col justify-start">
