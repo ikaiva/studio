@@ -20,10 +20,12 @@ export default function Loading({ onComplete }: { onComplete: () => void }) {
   }, [onComplete])
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
-      <h1 className="tracking-tighter">
-        {count}
-      </h1>
+    <div className="fixed inset-0 z-[100] bg-white">
+      <div className="px-[1rem] pt-[1rem]">
+        <h1 className="tracking-tighter">
+          {count}
+        </h1>
+      </div>
     </div>
   )
 }
