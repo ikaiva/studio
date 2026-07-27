@@ -29,7 +29,7 @@ export default function Blume({ page: _page }: ProjectProps) {
         </p>
       </div>
 
-      <div className="w-full h-[80vh] sm:h-[70vh] overflow-hidden mt-12">
+      <div className="w-full h-[70vh] sm:h-[70vh] overflow-hidden mt-12">
         <Img src="/blume/cover" alt="blume cover" />
       </div>
 
@@ -45,23 +45,23 @@ export default function Blume({ page: _page }: ProjectProps) {
           <Img src="/blume/1" alt="blume image 1" />
         </div>
 
-        <div className="w-full h-[30vh] sm:h-[90vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[90vh] overflow-hidden">
           <Img src="/blume/2" alt="blume image 2" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[90vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[90vh] overflow-hidden">
           <Img src="/blume/3" alt="blume image 3" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[90vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[90vh] overflow-hidden">
           <Img src="/blume/4" alt="blume image 4" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[90vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[90vh] overflow-hidden">
           <Img src="/blume/5" alt="blume image 5" />
         </div>
 
-        <div className="w-full h-[120vh] sm:h-[90vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[90vh] overflow-hidden">
           <Img src="/blume/6" alt="blume image 6" />
         </div>
       </div>

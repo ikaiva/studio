@@ -29,7 +29,7 @@ export default function Beans({ page: _page }: ProjectProps) {
         </p>
       </div>
 
-      <div className="w-full h-[80vh] sm:h-[90vh] overflow-hidden mt-12">
+      <div className="w-full h-[70vh] sm:h-[90vh] overflow-hidden mt-12">
         <Img src="/beans/cover" alt="beans cover" />
       </div>
 
@@ -41,27 +41,27 @@ export default function Beans({ page: _page }: ProjectProps) {
       </div>
 
       <div className="mt-[3rem] flex flex-col">
-        <div className="w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[100vh] overflow-hidden">
           <Img src="/beans/2" alt="beans image 1" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[100vh] overflow-hidden">
           <Img src="/beans/3" alt="beans image 2" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[100vh] overflow-hidden">
           <Img src="/beans/4" alt="beans image 3" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[100vh] overflow-hidden">
           <Img src="/beans/5" alt="beans image 4" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[100vh] overflow-hidden">
           <Img src="/beans/6" alt="beans image 5" />
         </div>
 
-        <div className="w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[100vh] overflow-hidden">
           <Img src="/beans/7" alt="beans image 6" />
         </div>
       </div>

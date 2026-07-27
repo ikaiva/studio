@@ -29,7 +29,7 @@ export default function Artruth({ page: _page }: ProjectProps) {
         </p>
       </div>
 
-      <div className="w-full h-[60vh] sm:h-[80vh] overflow-hidden mt-12">
+      <div className="w-full h-[70vh] sm:h-[80vh] overflow-hidden mt-12">
         <Img src="/artruth/cover" alt="artruth cover" />
       </div>
 
@@ -41,27 +41,27 @@ export default function Artruth({ page: _page }: ProjectProps) {
       </div>
 
       <div className="mt-[3rem] flex flex-col ">
-        <div className="w-full h-[60vh] sm:h-[80vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[80vh] overflow-hidden">
           <Img src="/artruth/2" alt="artruth brand detail" />
         </div>
 
-        <div className="w-full h-[60vh] sm:h-[120vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[120vh] overflow-hidden">
           <Img src="/artruth/3" alt="artruth packaging" />
         </div>
 
-        <div className="w-full h-[60vh] sm:h-[120vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[120vh] overflow-hidden">
           <Img src="/artruth/4" alt="artruth identity" />
         </div>
 
-        <div className="w-full h-[60vh] sm:h-[80vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[80vh] overflow-hidden">
           <Img src="/artruth/5" alt="artruth application" />
         </div>
 
-        <div className="w-full h-[60vh] sm:h-[80vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[80vh] overflow-hidden">
           <Img src="/artruth/6" alt="artruth product" />
         </div>
 
-        <div className="w-full h-[60vh] sm:h-[80vh] overflow-hidden">
+        <div className="w-full h-[70vh] sm:h-[80vh] overflow-hidden">
           <Img src="/artruth/7" alt="artruth final" />
         </div>
       </div>
