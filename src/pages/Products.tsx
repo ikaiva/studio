@@ -31,20 +31,13 @@ export default function Products({ page: _page }: ProductsProps) {
             onClick={() => { project.href ? window.open(project.href, '_blank') : window.location.hash = `/${project.slug}` }}
             className="cursor-pointer"
           >
-            <div className="w-full h-[60vh] overflow-hidden">
-              <picture className="w-full h-full block">
-                <source media="(min-width: 640px)" srcSet={`${project.cover}.avif`} type="image/avif" />
-                <source media="(min-width: 640px)" srcSet={`${project.cover}.webp`} type="image/webp" />
-                <source media="(min-width: 640px)" srcSet={`${project.cover}.png`} type="image/png" />
-                <source srcSet={`${project.cover}.avif`} type="image/avif" />
-                <source srcSet={`${project.cover}.webp`} type="image/webp" />
-                <img
-                  src={`${project.cover}.png`}
-                  alt={project.name}
-                  decoding="async"
-                  className="w-full h-full object-cover object-center"
-                />
-              </picture>
+            <div className="w-full h-[60vh] bg-black flex items-center justify-center overflow-hidden">
+              <img
+                src={`${project.cover}.png`}
+                alt={project.name}
+                decoding="async"
+                className="w-1/3 h-auto object-contain"
+              />
             </div>
             <div className="px-[1rem] flex justify-between items-start pt-[0.5rem]">
               <h2 className="tracking-tighter">
