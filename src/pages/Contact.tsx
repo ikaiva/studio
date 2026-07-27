@@ -10,7 +10,7 @@ const links = [
 
 export default function Contact({ page: _page }: ContactProps) {
   return (
-    <div className="relative bg-white min-h-screen pb-[5rem] flex flex-col justify-between">
+    <div className="fixed inset-0 bg-white pb-[5rem] flex flex-col justify-between">
       <div className="pt-[1rem] px-[1rem]">
         <h1 className="text-[8vw] sm:text-[5vw] tracking-tighter max-w-[90vw]">
           let's work together

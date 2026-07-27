@@ -4,7 +4,7 @@ interface AboutProps {
 
 export default function About({ page: _page }: AboutProps) {
   return (
-    <div className="relative bg-white min-h-screen pb-[5rem] flex flex-col justify-between">
+    <div className="fixed inset-0 bg-white pb-[5rem] flex flex-col justify-between">
       <div className="m-[1rem] flex-1 flex flex-col justify-start">
         <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw]">
           we're a multidisciplinary studio creating works across disciplines
