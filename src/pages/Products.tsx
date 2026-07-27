@@ -32,12 +32,18 @@ export default function Products({ page: _page }: ProductsProps) {
             className="cursor-pointer"
           >
             <div className="w-full h-[60vh] sm:h-[70vh] bg-black flex items-center justify-center overflow-hidden">
-              <img
-                src={`${project.cover}.png`}
-                alt={project.name}
-                decoding="async"
-                className="w-1/3 h-auto object-contain"
-              />
+              <picture className="block">
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.avif`} type="image/avif" />
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.webp`} type="image/webp" />
+                <source srcSet={`${project.cover}.avif`} type="image/avif" />
+                <source srcSet={`${project.cover}.webp`} type="image/webp" />
+                <img
+                  src={`${project.cover}.png`}
+                  alt={project.name}
+                  decoding="async"
+                  className="w-[50%] sm:w-1/3 h-auto object-contain"
+                />
+              </picture>
             </div>
             <div className="px-[1rem] flex justify-between items-start pt-[0.5rem]">
               <h2 className="tracking-tighter">
