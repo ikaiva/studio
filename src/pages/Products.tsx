@@ -6,7 +6,7 @@ const projects = [
   {
     name: 'clario by ikaiva',
     slug: 'clario',
-    outcome: 'streamlined client communication for 50+ agencies',
+    outcome: '2026',
     details: 'an AI-powered project management tool built for creative studios',
     cover: '/clario/cover',
     href: 'https://clario-delta.vercel.app',
@@ -43,7 +43,7 @@ export default function Products({ page: _page }: ProductsProps) {
               <h2 className="tracking-tighter">
                 {project.name}
               </h2>
-              <p className="tracking-tighter text-gray-500">
+              <p className="tracking-tighter ">
                 {project.outcome}
               </p>
             </div>

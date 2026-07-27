@@ -10,7 +10,7 @@ export default function About({ page: _page }: AboutProps) {
           we're a multidisciplinary studio creating works across disciplines
         </h1>
         <p className="mt-[1rem] tracking-tighter text-gray-500">
-          we create products and solve problems across industries
+          we create products and solve problems across industries that reflect why they exist
         </p>
       </div>
       <div className="m-[1rem] grid grid-cols-1 sm:grid-cols-3 gap-[2rem]">
