@@ -8,62 +8,68 @@ const projects = [
     slug: 'artruth',
     outcome: 'enhanced user engagement by 40%',
     details: 'a digital platform for authentic storytelling and brand transparency',
-    color: 'bg-rose-300',
+    cover: '/artruth/cover',
   },
   {
     name: 'beans',
     slug: 'beans',
     outcome: 'streamlined operations for 200+ vendors',
     details: 'an end-to-end marketplace connecting local producers with consumers',
-    color: 'bg-amber-300',
+    cover: '/beans/cover',
   },
   {
     name: 'blume',
     slug: 'blume',
     outcome: 'grew online sales by 60% in 3 months',
     details: 'a premium e-commerce experience for a sustainable beauty brand',
-    color: 'bg-emerald-300',
+    cover: '/blume/cover',
   },
   {
     name: 'southern floorings',
     slug: 'southern-floorings',
     outcome: 'increased lead generation by 3x',
     details: 'a product catalog and inquiry system for a flooring manufacturer',
-    color: 'bg-sky-300',
-  },
-  {
-    name: 'manam chennai',
-    slug: 'manam-chennai',
-    outcome: 'boosted table bookings by 50%',
-    details: 'a reservation and branding platform for a fine-dining restaurant',
-    color: 'bg-violet-300',
+    cover: '/sf/cover',
   },
 ]
 
 export default function Work({ page: _page }: WorkProps) {
   return (
-    <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col">
+    <div className="relative bg-white min-h-screen pb-[5rem] flex flex-col">
       <div className="pt-[1rem] px-[1rem] flex-1 flex flex-col justify-end pb-[1rem]">
-        <h1 className="text-[8vw] sm:text-[5vw] tracking-tighter max-w-[90vw]">
-          we design brands and interfaces with its purpose
+        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[80vw]">
+          we design brands and interfaces with the purpose they serve
         </h1>
         <p className="text-[4vw] sm:text-[2vw] mt-[0.4em] tracking-tighter text-gray-500">
-          a curated selection of projects we've built and delivered
+          a selection of works we've created
         </p>
       </div>
       <div className="px-[1rem] mt-24 flex flex-col gap-[1rem]">
         {projects.map((project) => (
-          <a
+          <div
             key={project.name}
-            href={`#/${project.slug}`}
+            onClick={() => { window.location.hash = `/${project.slug}` }}
             className="group block cursor-pointer"
           >
-            <div className={`relative w-full h-[60vh] ${project.color}`}>
+            <div className="relative w-full h-[60vh] overflow-hidden">
+              <picture className="w-full h-full block">
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.avif`} type="image/avif" />
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.webp`} type="image/webp" />
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.png`} type="image/png" />
+                <source srcSet={`${project.cover}.avif`} type="image/avif" />
+                <source srcSet={`${project.cover}.webp`} type="image/webp" />
+                <img
+                  src={`${project.cover}.png`}
+                  alt={project.name}
+                  decoding="async"
+                  className="w-full h-full object-cover object-center"
+                />
+              </picture>
               <div className="hidden sm:flex absolute inset-0 p-[1.5rem] flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h2 className="text-[2vw] tracking-tighter font-medium">
+                <h2 className="text-[4vw] tracking-tighter font-medium text-white">
                   {project.name}
                 </h2>
-                <p className="text-[1.2vw] tracking-tighter">
+                <p className="text-[1.2vw] tracking-tighter text-white">
                   {project.details}
                 </p>
               </div>
@@ -76,7 +82,7 @@ export default function Work({ page: _page }: WorkProps) {
                 {project.outcome}
               </p>
             </div>
-          </a>
+          </div>
         ))}
       </div>
       <div className="h-[20vh]" />

@@ -10,7 +10,7 @@ const links = [
 
 export default function Contact({ page: _page }: ContactProps) {
   return (
-    <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col justify-between">
+    <div className="relative bg-white min-h-screen pb-[5rem] flex flex-col justify-between">
       <div className="pt-[1rem] px-[1rem]">
         <h1 className="text-[8vw] sm:text-[5vw] tracking-tighter max-w-[90vw]">
           let's work together
@@ -21,13 +21,13 @@ export default function Contact({ page: _page }: ContactProps) {
       </div>
       <div className="px-[1rem] flex flex-col g">
         {links.map((link) => (
-          <a
+          <div
             key={link.name}
-            href={link.href}
-            className="text-[6vw] sm:text-[3vw] tracking-tighter text-gray-400 hover:text-black transition-colors cursor-pointer"
+            onClick={() => { window.location.href = link.href }}
+            className="text-[6vw] sm:text-[3vw] tracking-tighter text-gray-400 hover:text-black transition-colors cursor-pointer select-none"
           >
             {link.name}
-          </a>
+          </div>
         ))}
       </div>
     </div>

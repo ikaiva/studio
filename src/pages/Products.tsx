@@ -14,25 +14,25 @@ const projects = [
 
 export default function Products({ page: _page }: ProductsProps) {
   return (
-    <div className="relative bg-white min-h-screen pb-[5rem] z-20 flex flex-col">
+    <div className="relative bg-white min-h-screen pb-[5rem] flex flex-col">
       <div className="pt-[1rem] px-[1rem] flex-1 flex flex-col justify-end pb-[1rem]">
-        <h1 className="text-[8vw] sm:text-[5vw] tracking-tighter max-w-[90vw]">
-          products we've built to solve real problems
+        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw]">
+          We create artificial intelligence products in search of what they should be for
         </h1>
-        <p className="text-[4vw] sm:text-[2vw] mt-[0.4em] tracking-tighter text-gray-500">
-          tools and platforms designed to make a difference
+        <p className="text-[4vw] sm:text-[1.75vw] mt-[0.4em] tracking-tighter text-gray-500">
+          Every product is our attempt to understand where artificial intelligence belongs, and where it doesn't
         </p>
       </div>
       <div className="px-[1rem] mt-24 flex flex-col gap-[1rem]">
         {projects.map((project) => (
-          <a
+          <div
             key={project.name}
-            href={`#/${project.slug}`}
+            onClick={() => { window.location.hash = `/${project.slug}` }}
             className="group block cursor-pointer"
           >
             <div className={`relative w-full h-[60vh] ${project.color}`}>
               <div className="hidden sm:flex absolute inset-0 p-[1.5rem] flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h2 className="text-[2vw] tracking-tighter font-medium">
+                <h2 className="text-[4vw] tracking-tighter font-medium">
                   {project.name}
                 </h2>
                 <p className="text-[1.2vw] tracking-tighter">
@@ -41,14 +41,14 @@ export default function Products({ page: _page }: ProductsProps) {
               </div>
             </div>
             <div className="flex sm:hidden justify-between items-start pt-[0.5rem]">
-              <h2 className="text-[3vw] tracking-tighter font-medium">
+              <h2 className="text-[3vw] tracking-tighter font-medium ">
                 {project.name}
               </h2>
               <p className="text-[3vw] tracking-tighter text-gray-800">
                 {project.outcome}
               </p>
             </div>
-          </a>
+          </div>
         ))}
       </div>
       <div className="h-[20vh]" />

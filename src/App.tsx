@@ -33,7 +33,7 @@ function App() {
       case 'work':
       case 'service':
         return <Work page={page} />
-      case 'products':
+      case 'product':
         return <Products page={page} />
       case 'contact':
         return <Contact page={page} />
