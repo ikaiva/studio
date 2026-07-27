@@ -13,7 +13,7 @@ function NavLink({ name, href, isActive }: { name: string; href: string; isActiv
   return (
     <div
       onClick={() => { window.location.hash = isActive ? '/' : href.replace('#', '') }}
-      className="cursor-pointer hover:opacity-70 transition-opacity text-[16px] sm:text-[18px] text-black select-none"
+      className="cursor-pointer hover:opacity-70 transition-opacity text-black select-none"
     >
       {isActive ? 'home' : name}
     </div>

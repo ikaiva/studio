@@ -5,7 +5,7 @@ interface HomeProps {
 export default function Home({ page: _page }: HomeProps) {
   return (
     <div className="fixed inset-0 bg-white pb-[5rem]">
-      <div className="m-[1rem] h-[80vh] flex items-center justify-center overflow-hidden">
+      <div className=" h-[85vh] flex items-center justify-center overflow-hidden">
         <picture className="w-full h-full block">
           <source media="(min-width: 640px)" srcSet="/desktop.avif" type="image/avif" />
           <source media="(min-width: 640px)" srcSet="/desktop.webp" type="image/webp" />

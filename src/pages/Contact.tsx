@@ -12,11 +12,11 @@ export default function Contact({ page: _page }: ContactProps) {
   return (
     <div className="fixed inset-0 bg-white pb-[5rem] flex flex-col justify-between">
       <div className="pt-[1rem] px-[1rem]">
-        <h1 className="text-[8vw] sm:text-[5vw] tracking-tighter max-w-[90vw]">
-          let's work together
+        <h1 className="tracking-tighter max-w-[90vw]">
+          questions are welcome
         </h1>
-        <p className="text-[4vw] sm:text-[2vw] mt-[0.4em] tracking-tighter text-gray-500">
-          reach out and let's start a conversation
+        <p className="mt-[1rem] tracking-tighter text-gray-500">
+          the best work begins by asking the right question
         </p>
       </div>
       <div className="px-[1rem] flex flex-col g">
@@ -24,7 +24,7 @@ export default function Contact({ page: _page }: ContactProps) {
           <div
             key={link.name}
             onClick={() => { window.location.href = link.href }}
-            className="text-[6vw] sm:text-[3vw] tracking-tighter text-gray-400 hover:text-black transition-colors cursor-pointer select-none"
+            className="tracking-tighter text-gray-500 hover:text-black transition-colors cursor-pointer select-none"
           >
             {link.name}
           </div>

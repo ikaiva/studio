@@ -4,11 +4,12 @@ interface ProductsProps {
 
 const projects = [
   {
-    name: 'clario',
+    name: 'clario by ikaiva',
     slug: 'clario',
     outcome: 'streamlined client communication for 50+ agencies',
     details: 'an AI-powered project management tool built for creative studios',
-    color: 'bg-indigo-300',
+    cover: '/clario/cover',
+    href: 'https://clario-delta.vercel.app',
   },
 ]
 
@@ -16,35 +17,40 @@ export default function Products({ page: _page }: ProductsProps) {
   return (
     <div className="relative bg-white min-h-screen pb-[5rem] flex flex-col">
       <div className="pt-[1rem] px-[1rem] flex-1 flex flex-col justify-end pb-[1rem]">
-        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw]">
+        <h1 className="tracking-tighter max-w-[90vw]">
           We create artificial intelligence products in search of what they should be for
         </h1>
-        <p className="text-[4vw] sm:text-[1.75vw] mt-[0.4em] tracking-tighter text-gray-500">
+        <p className="mt-[1rem] tracking-tighter text-gray-500">
           Every product is our attempt to understand where artificial intelligence belongs, and where it doesn't
         </p>
       </div>
-      <div className="px-[1rem] mt-24 flex flex-col gap-[1rem]">
+      <div className="mt-24 flex flex-col gap-[1rem]">
         {projects.map((project) => (
           <div
             key={project.name}
-            onClick={() => { window.location.hash = `/${project.slug}` }}
-            className="group block cursor-pointer"
+            onClick={() => { project.href ? window.open(project.href, '_blank') : window.location.hash = `/${project.slug}` }}
+            className="cursor-pointer"
           >
-            <div className={`relative w-full h-[60vh] ${project.color}`}>
-              <div className="hidden sm:flex absolute inset-0 p-[1.5rem] flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h2 className="text-[4vw] tracking-tighter font-medium">
-                  {project.name}
-                </h2>
-                <p className="text-[1.2vw] tracking-tighter">
-                  {project.details}
-                </p>
-              </div>
+            <div className="w-full h-[60vh] overflow-hidden">
+              <picture className="w-full h-full block">
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.avif`} type="image/avif" />
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.webp`} type="image/webp" />
+                <source media="(min-width: 640px)" srcSet={`${project.cover}.png`} type="image/png" />
+                <source srcSet={`${project.cover}.avif`} type="image/avif" />
+                <source srcSet={`${project.cover}.webp`} type="image/webp" />
+                <img
+                  src={`${project.cover}.png`}
+                  alt={project.name}
+                  decoding="async"
+                  className="w-full h-full object-cover object-center"
+                />
+              </picture>
             </div>
-            <div className="flex sm:hidden justify-between items-start pt-[0.5rem]">
-              <h2 className="text-[3vw] tracking-tighter font-medium ">
+            <div className="px-[1rem] flex justify-between items-start pt-[0.5rem]">
+              <h2 className="tracking-tighter">
                 {project.name}
               </h2>
-              <p className="text-[3vw] tracking-tighter text-gray-800">
+              <p className="tracking-tighter text-gray-500">
                 {project.outcome}
               </p>
             </div>
@@ -54,40 +60,31 @@ export default function Products({ page: _page }: ProductsProps) {
       <div className="h-[20vh]" />
       <div className="px-[1rem] grid grid-cols-1 sm:grid-cols-3 gap-[2rem] pb-[5rem]">
         <div className="max-w-[70%]">
-          <h2 className="text-[5vw] sm:text-[1.2vw]">purpose</h2>
-          <p className="text-[3.5vw] sm:text-[1.2vw] text-gray-500">
-            we exist to create meaningful work that bridges the gap between ideas and reality. every project starts with a question and ends with a solution that matters.
+          <h2>problem</h2>
+          <p className="text-gray-500">
+            we've spent years asking artificial intelligence what it can do. we haven't spent nearly as long asking what it's meant to do
           </p>
         </div>
         <div className="max-w-[70%]">
-          <h2 className="text-[5vw] sm:text-[1.2vw]">mission</h2>
-          <p className="text-[3.5vw] sm:text-[1.2vw] text-gray-500">
-            to push boundaries across disciplines and deliver design-led experiences that resonate. we believe in simplicity, clarity, and purpose-driven creation.
+          <h2>solution</h2>
+          <p className="text-gray-500">
+            every product is an experiment. not in intelligence, but in purpose
           </p>
         </div>
         <div className="max-w-[70%]">
-          <h2 className="text-[5vw] sm:text-[1.2vw]">vision</h2>
-          <p className="text-[3.5vw] sm:text-[1.2vw] text-gray-500">
-            to become a studio that shapes how people interact with brands, products, and spaces. we envision a future where design solves what words cannot.
+          <h2>shift</h2>
+          <p className="text-gray-500">
+            artificial intelligence is a question worth asking 
           </p>
         </div>
       </div>
       <div className="h-[10vh]" />
       <div className="px-[1rem]  pb-[5rem]">
-        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw]  sm:leading-13">
-          we approach each project with the belief that design should be shaped by purpose,
+        <h1 className="tracking-tighter max-w-[90vw] sm:leading-13">
+          we approach each experiment with the belief that artificial intelligence will eventually find its place
         </h1>
-        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw] sm:leading-13">
-          a clothing store should help sell clothing,
-        </h1>
-        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw] sm:leading-13">
-          an art studio should tell a story,
-        </h1>
-        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw] sm:leading-13">
-          a research institution should communicate knowledge,
-        </h1>
-        <h1 className="text-[8vw] sm:text-[4vw] tracking-tighter max-w-[90vw]  sm:leading-13">
-          the design may be quiet, expressive, commercial, or functional, but it always feels true to its purpose
+        <h1 className="tracking-tighter max-w-[90vw] sm:leading-13">
+          we make an attempt to understand where artificial intelligence belongs, and where it doesn't
         </h1>
       </div>
     </div>
