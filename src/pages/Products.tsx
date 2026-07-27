@@ -31,7 +31,7 @@ export default function Products({ page: _page }: ProductsProps) {
             onClick={() => { project.href ? window.open(project.href, '_blank') : window.location.hash = `/${project.slug}` }}
             className="cursor-pointer"
           >
-            <div className="w-full h-[60vh] bg-black flex items-center justify-center overflow-hidden">
+            <div className="w-full h-[60vh] sm:h-[70vh] bg-black flex items-center justify-center overflow-hidden">
               <img
                 src={`${project.cover}.png`}
                 alt={project.name}

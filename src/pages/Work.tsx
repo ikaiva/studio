@@ -52,7 +52,7 @@ export default function Work({ page: _page }: WorkProps) {
             onClick={() => { project.href ? window.open(project.href, '_blank') : window.location.hash = `/${project.slug}` }}
             className="cursor-pointer"
           >
-            <div className="w-full h-[80vh] overflow-hidden ">
+            <div className="w-full h-[60vh] sm:h-[70vh] overflow-hidden ">
               <picture className="w-full h-full block">
                 <source media="(min-width: 640px)" srcSet={`${project.cover}.avif`} type="image/avif" />
                 <source media="(min-width: 640px)" srcSet={`${project.cover}.webp`} type="image/webp" />
